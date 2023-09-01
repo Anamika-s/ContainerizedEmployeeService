@@ -15,10 +15,11 @@ namespace EmployeeService
             builder.Services.AddScoped<IRepo, Repo>();
             builder.Services.AddControllers();
             var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+
             var dbName = Environment.GetEnvironmentVariable("DB_NAME");
             var dbPassword = Environment.GetEnvironmentVariable("DB_MSSQL_SA_PASSWORD");
-            var connectiontString = $"server={dbHost};database={dbName};user id=sa;password={dbPassword};TrustServerCertificate=True";       
-                //builder.Services.AddDbContext<EmpDbContext>(op => op.UseSqlServer(builder.Configuration["ConnectionStrings:MyC"]));
+            var connectiontString = $"server={dbHost};database={dbName};user id=sa;password={dbPassword};TrustServerCertificate=True";
+            //builder.Services.AddDbContext<EmpDbContext>(op => op.UseSqlServer(builder.Configuration["ConnectionStrings:MyC"]));
             builder.Services.AddDbContext<EmpDbContext>(op => op.UseSqlServer(connectiontString));
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
